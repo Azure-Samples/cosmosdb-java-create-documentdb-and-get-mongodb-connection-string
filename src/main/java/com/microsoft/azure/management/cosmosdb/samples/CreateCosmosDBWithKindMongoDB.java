@@ -4,13 +4,13 @@
  * license information.
  */
 
-package com.microsoft.azure.management.documentdb.samples;
+package com.microsoft.azure.management.cosmosdb.samples;
 
 import com.microsoft.azure.credentials.ApplicationTokenCredentials;
 import com.microsoft.azure.management.Azure;
-import com.microsoft.azure.management.documentdb.DatabaseAccountKind;
-import com.microsoft.azure.management.documentdb.DocumentDBAccount;
-import com.microsoft.azure.management.documentdb.implementation.DatabaseAccountListConnectionStringsResult;
+import com.microsoft.azure.management.cosmosdb.CosmosDBAccount;
+import com.microsoft.azure.management.cosmosdb.DatabaseAccountKind;
+import com.microsoft.azure.management.cosmosdb.implementation.DatabaseAccountListConnectionStringsResult;
 import com.microsoft.azure.management.resources.fluentcore.arm.Region;
 import com.microsoft.azure.management.resources.fluentcore.utils.SdkContext;
 import com.microsoft.azure.management.samples.Utils;
@@ -19,12 +19,12 @@ import com.microsoft.rest.LogLevel;
 import java.io.File;
 
 /**
- * Azure DocumentDB sample for high availability.
- *  - Create a DocumentDB configured with MongoDB kind.
+ * Azure CosmosDB sample for high availability.
+ *  - Create a CosmosDB configured with MongoDB kind.
  *  - Get the mongodb connection string
- *  - Delete the DocumentDB.
+ *  - Delete the CosmosDB.
  */
-public final class CreateDocumentDBWithKindMongoDB {
+public final class CreateCosmosDBWithKindMongoDB {
     static final String DATABASE_ID = "TestDB";
     static final String COLLECTION_ID = "TestCollection";
 
@@ -40,10 +40,10 @@ public final class CreateDocumentDBWithKindMongoDB {
 
         try {
             //============================================================
-            // Create a DocumentDB
+            // Create a CosmosDB
 
-            System.out.println("Creating a DocumentDB...");
-            DocumentDBAccount documentDBAccount = azure.documentDBs().define(docDBName)
+            System.out.println("Creating a CosmosDB...");
+            CosmosDBAccount cosmosDBAccount = azure.cosmosDBAccounts().define(docDBName)
                     .withRegion(Region.US_EAST)
                     .withNewResourceGroup(rgName)
                     .withKind(DatabaseAccountKind.MONGO_DB)
@@ -52,19 +52,19 @@ public final class CreateDocumentDBWithKindMongoDB {
                     .withReadReplication(Region.US_CENTRAL)
                     .create();
 
-            System.out.println("Created DocumentDB");
-            Utils.print(documentDBAccount);
+            System.out.println("Created CosmosDB");
+            Utils.print(cosmosDBAccount);
 
             System.out.println("Get the MongoDB connection string");
-            DatabaseAccountListConnectionStringsResult databaseAccountListConnectionStringsResult = documentDBAccount.listConnectionStrings();
+            DatabaseAccountListConnectionStringsResult databaseAccountListConnectionStringsResult = cosmosDBAccount.listConnectionStrings();
             System.out.println("MongoDB connection string: "
                     + databaseAccountListConnectionStringsResult.connectionStrings().get(0).connectionString());
 
             //============================================================
-            // Delete DocumentDB
-            System.out.println("Deleting the DocumentDB");
-            azure.documentDBs().deleteById(documentDBAccount.id());
-            System.out.println("Deleted the DocumentDB");
+            // Delete CosmosDB
+            System.out.println("Deleting the CosmosDB");
+            azure.cosmosDBAccounts().deleteById(cosmosDBAccount.id());
+            System.out.println("Deleted the CosmosDB");
 
             return true;
         } catch (Exception e) {
@@ -111,6 +111,6 @@ public final class CreateDocumentDBWithKindMongoDB {
         }
     }
 
-    private CreateDocumentDBWithKindMongoDB() {
+    private CreateCosmosDBWithKindMongoDB() {
     }
 }

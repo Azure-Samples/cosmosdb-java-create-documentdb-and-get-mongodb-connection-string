@@ -1,16 +1,16 @@
 ---
-services: Documentdb
+services: Cosmosdb
 platforms: java
 author: alvadb
 ---
 
-## Getting Started with Documentdb - Create Document DB With Kind Mongo DB - in Java ##
+## Getting Started with Cosmosdb - Create Cosmos DB With Kind Mongo DB - in Java ##
 
 
-Azure DocumentDB sample for high availability.
-  - Create a DocumentDB configured with MongoDB kind.
-  - Get the mongodb connection string
-  - Delete the DocumentDB.
+  Azure CosmosDB sample for high availability.
+   - Create a CosmosDB configured with MongoDB kind.
+   - Get the mongodb connection string
+   - Delete the CosmosDB.
  
 
 ## Running this Sample ##
