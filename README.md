@@ -4,9 +4,8 @@ languages:
 - java
 products:
 - azure
-extensions:
-- services: Cosmosdb
-- platforms: java
+description: "Getting Started with Cosmosdb - Create Cosmos DB With Kind Mongo DB - in Java"
+urlFragment: cosmosdb-java-create-documentdb-and-get-mongodb-connection-string
 ---
 
 # Getting Started with Cosmosdb - Create Cosmos DB With Kind Mongo DB - in Java #
